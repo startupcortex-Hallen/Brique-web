@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BriquePRO</title>
+  <script>
+    (function () {
+      var known = [
+        'planos', 'sign-in', 'sign-up', 'forgot-password', 'reset-password',
+        'loja', 'produtos', 'vendas', 'fiado', 'ordem-de-servico', 'garantias',
+        'documentos', 'relatorio', 'calculadora', 'ferramentas', 'monitoramento',
+        'oportunidades', 'repasses', 'buscas-programadas', 'minha-loja', 'anuncios',
+        'assinatura', 'configuracoes', 'como-usar', 'termos', 'politica-de-privacidade',
+        'admin', 'dashboard'
+      ];
+      var segments = window.location.pathname.split('/').filter(Boolean);
+      var first = segments.length ? segments[0] : '';
+      var base = segments.length && known.indexOf(first) === -1 ? '/' + first + '/' : '/';
+      var prefix = base.slice(0, -1);
+      var hash = window.location.pathname.indexOf(prefix) === 0
+        ? window.location.pathname.slice(prefix.length)
+        : window.location.pathname;
+      if (!hash) hash = '/';
+      window.location.replace(base + '#' + hash + window.location.search);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecionando para o BriquePRO...</p>
+</body>
+</html>
