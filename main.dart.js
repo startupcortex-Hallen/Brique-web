@@ -9479,6 +9479,8 @@ if(B.l.m(s,"Invalid login credentials"))return"E-mail ou senha inv\xe1lidos."
 if(B.l.m(s,"Email not confirmed"))return"Confirme seu e-mail antes de entrar."
 if(B.l.m(s,"User already registered"))return"Este e-mail j\xe1 est\xe1 cadastrado."
 if(B.l.m(s,"Password should be at least"))return u.k
+if(B.l.m(s,"over_email_send_rate_limit")||B.l.m(s,"email rate limit exceeded")||B.l.m(s,"Email rate limit exceeded"))return"Limite de envio de e-mails atingido. Aguarde cerca de 1 hora e tente novamente."
+if(B.l.m(s,"429")||B.l.m(s,"rate limit"))return"Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente novamente."
 if(B.l.m(s,"JWT expired"))return"Sua sess\xe3o expirou. Entre novamente."
 if(B.l.m(s,"SocketException")||B.l.m(s,"Failed host lookup"))return"Sem conex\xe3o com a internet."
 if(B.l.m(s,"duplicate key"))return"Este registro j\xe1 existe."
