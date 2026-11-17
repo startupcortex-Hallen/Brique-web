@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voltando para o HALMEX...</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #0b1310;
+        color: #f4f7f5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      main {
+        min-height: 100%;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      .card {
+        max-width: 420px;
+        width: 100%;
+        background: #111d18;
+        border: 1px solid #223a2f;
+        border-radius: 16px;
+        padding: 28px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0 0 8px;
+      }
+      p {
+        margin: 0 0 18px;
+        color: #a8b8b0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      a {
+        display: inline-block;
+        background: #2bcc7c;
+        color: #07120d;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 12px 20px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <h1>Pagamento recebido</h1>
+        <p>Estamos voltando para o aplicativo para atualizar seu acesso.</p>
+        <a id="fallback" href="./#/assinatura?checkout=success">Abrir o aplicativo</a>
+      </section>
+    </main>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var rawStatus = (params.get("status") || "").toLowerCase();
+        var collection = (params.get("collection_status") || "").toLowerCase();
+        var status = rawStatus || collection;
+        if (status === "approved") status = "success";
+        if (status !== "success" && status !== "pending" && status !== "failure") {
+          status = "success";
+        }
+        var next = (params.get("next") || "").toLowerCase();
+        if (next !== "fornecedores" && next !== "assinatura" && next !== "cursos/meus") next = "assinatura";
+        var target = new URL("./#/" + next + "?checkout=" + encodeURIComponent(status), window.location.href);
+        document.getElementById("fallback").setAttribute("href", target.toString());
+        window.location.replace(target.toString());
+      })();
+    </script>
+  </body>
+</html>

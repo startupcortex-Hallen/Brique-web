@@ -3,7 +3,7 @@
   "short_name": "HALMEX",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#111111",
+  "background_color": "#00080B",
   "theme_color": "#2bcc7c",
   "description": "Gestão de produtos, vendas, fiado, garantias e oportunidades para revendedores.",
   "orientation": "portrait-primary",
